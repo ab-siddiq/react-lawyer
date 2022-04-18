@@ -11,6 +11,7 @@ import ResetPassword from './components/Pages/Login/ResetPassword/ResetPassword'
 import Profile from './components/Pages/Profile/Profile';
 import RequireAuth from './components/Pages/Login/RequireAuth/RequireAuth';
 import GetService from './components/Pages/Services/GetService/GetService';
+import SocialLogin from './components/Pages/Login/SocialLogin/SocialLogin';
 
 function App() {
   return (
@@ -21,13 +22,19 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/socialLogin' element={<SocialLogin></SocialLogin>}></Route>
         <Route path='/resetpassword' element={<ResetPassword></ResetPassword>}></Route>
         <Route path='/getService/:serviceId' element={
           <RequireAuth>
             <GetService></GetService>
           </RequireAuth>
         }></Route>
-        <Route path='/profile' element={<Profile></Profile>}></Route>
+        <Route path='/profile' element={
+          <RequireAuth>
+            <Profile></Profile>
+          </RequireAuth>
+
+        }></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

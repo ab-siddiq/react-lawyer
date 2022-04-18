@@ -1,27 +1,35 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import './Login.css';
+import SocialLogin from './SocialLogin/SocialLogin';
 
 const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate('');
+    const location = useLocation();
     const [signInWithEmailAndPassword,   user  ] = useSignInWithEmailAndPassword(auth);
-
-  
+    
+    const from = location.state?.from?.pathname || '/';
+    if (user) {
+        navigate(from, {replace:true});
+    }
     
     const handleLogin = async e => {
         e.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
-        navigate('/profile');
+        navigate('/');
     }
+   
     if (user) {
         console.log('login success')
     }
+
     return (
         <div className='container w-50 mt-5 p-5 border'>
             <h3 className='text-center'>Please Login</h3>
@@ -48,6 +56,12 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
+            <div className="d-flex justify-content-center align-items-center w-50 mx-auto">
+                <div  className="line"></div>
+                <span className='mb-1 mx-2'>or</span>
+                <div className="line"></div>
+            </div>
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
