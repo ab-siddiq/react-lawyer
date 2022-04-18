@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import  auth  from '../../../firebase.init';
 
 const Register = () => {
@@ -17,6 +17,7 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [sendEmailVerification] = useSendEmailVerification(auth);
     console.log(user)
 
     const handleSubmit = e => {
@@ -24,6 +25,7 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         createUserWithEmailAndPassword(email, password);
+        sendEmailVerification();
     
     }
     const handleRegister = () => {

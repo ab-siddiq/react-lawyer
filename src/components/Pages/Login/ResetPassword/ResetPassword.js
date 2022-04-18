@@ -1,30 +1,19 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
-import auth from '../../../firebase.init';
 
-const Login = () => {
+const ResetPassword = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
-    const [signInWithEmailAndPassword,   user  ] = useSignInWithEmailAndPassword(auth);
-
-  
-    
-    const handleLogin = e => {
+    const confirmPasswordRef = useRef('');
+    const handleResetPassword = e => {
         e.preventDefault();
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-        signInWithEmailAndPassword(email, password);
-
-    }
-    if (user) {
-        console.log('login success')
+        
     }
     return (
         <div className='container w-50 mt-5 p-5 border'>
             <h3 className='text-center'>Please Login</h3>
-            <Form onSubmit={handleLogin}>
+            <Form onSubmit={handleResetPassword}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control ref={emailRef} type="email" placeholder="Enter email" />
@@ -37,18 +26,22 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control ref={passwordRef} type="password" placeholder="Password" />
                 </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control ref={confirmPasswordRef} type="password" placeholder="Confirm Password" />
+                </Form.Group>
                 <Form.Group className="" controlId="formBasicCheckbox">
-                    <span>New to Law Academy? <Link to='/register'>Please register.</Link></span>
+                    <span>Want to login? <Link to='/login'>Login.</Link></span>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Link to='/resetpassword'>Forgot password?</Link>
-                </Form.Group>
+                {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Link to='/login'>Forgot password?</Link>
+                </Form.Group> */}
                 <Button className='' variant="primary" type="submit">
-                    Login
+                    Reset Password
                 </Button>
             </Form>
         </div>
     );
 };
 
-export default Login;
+export default ResetPassword;
