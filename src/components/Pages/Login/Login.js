@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import './Login.css';
 import SocialLogin from './SocialLogin/SocialLogin';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -24,6 +26,12 @@ const Login = () => {
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
         navigate('/');
+        if (email) {
+            toast('Login Successful!');
+        } else {
+            toast('Invalid user!');
+        }
+       
     }
    
     if (user) {
@@ -62,6 +70,7 @@ const Login = () => {
                 <div className="line"></div>
             </div>
             <SocialLogin></SocialLogin>
+            <ToastContainer />
         </div>
     );
 };

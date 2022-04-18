@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import  auth  from '../../../firebase.init';
 import SocialLogin from '../Login/SocialLogin/SocialLogin';
 
@@ -11,22 +11,27 @@ const Register = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const confirmPasswordRef = useRef('');
-    const navigate = useNavigate();
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const navigate = useNavigate('');
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    const [sendEmailVerification] = useSendEmailVerification(auth);
+    const [sendEmailVerification] = useSendEmailVerification(auth,{sendEmailVerification:true});
     console.log(user)
 
     const handleRegister = async e => {
         e.preventDefault();
+         const  name =await e.target.name.value;
+         const  phone =await e.target.phone.value;
          const  email =await e.target.email.value;
         const password = e.target.password.value;
-        createUserWithEmailAndPassword(email, password);
-        await sendEmailVerification();
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name, phoneNumber: phone });
+        sendEmailVerification();
+        navigate('/profile')
     
     }
  
