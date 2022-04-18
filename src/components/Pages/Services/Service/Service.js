@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Service = ({ service }) => {
@@ -8,6 +8,7 @@ const Service = ({ service }) => {
     const handleGetService = id => {
         console.log(id);
         navigate(`/getService/${id}`)
+        
     }
     return (
         <div className='border rounded p-5 h-100'>

@@ -14,14 +14,14 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container className=''>
-                    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                    <Navbar.Brand href="#home">Insaf Law</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to='/'>Home</Nav.Link>
                             <Nav.Link as={Link} to='/services'>Services</Nav.Link>
-                            <Nav.Link as={Link} to='/about'>About</Nav.Link>
+                            {/* <Nav.Link as={Link} to='/about'>About</Nav.Link> */}
                             
                         </Nav>
                         <Nav>
