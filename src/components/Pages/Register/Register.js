@@ -31,8 +31,6 @@ const Register = () => {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name, phoneNumber: phone });
         sendEmailVerification();
-        navigate('/profile')
-    
     }
  
    
