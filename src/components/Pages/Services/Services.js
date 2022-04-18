@@ -1,15 +1,21 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Service from './Service/Service';
+import service1 from '../../../images/serivice1.jpg';
+import service2 from '../../../images/serivice2.jpg';
+import service3 from '../../../images/serivice3.jpg';
+import service4 from '../../../images/serivice4.jpg';
+import service5 from '../../../images/serivice5.jpg';
+import service6 from '../../../images/serivice6.jpg';
 
 const Services = () => {
     const services = [
-        { id: 1, serviceName: 'Bank And Financial', serviceDescription: 'We provide efficient bank and financial service.', img: 'https://a6e8z9v6.stackpathcdn.com/lawyerbase/wp-co…1/photodune-448186-old-law-building-m-400x300.jpg' },
-        { id: 2, serviceName: 'Car Accident', serviceDescription: 'We provide support for car accident', img: 'https://a6e8z9v6.stackpathcdn.com/lawyerbase/wp-co…12/photodune-824920-bodywork-damage-m-400x300.jpg' },
-        { id: 3, serviceName: 'Personal Injury', serviceDescription: 'We help you to support if you are personally injured.', img: 'https://a6e8z9v6.stackpathcdn.com/lawyerbase/wp-co…lia_39975530_Subscription_Monthly_XXL-400x300.jpg' },
-        { id: 4, serviceName: 'Family Law', serviceDescription: 'If you are suffering in your internal family matter. We are here to help you.', img: 'https://a6e8z9v6.stackpathcdn.com/lawyerbase/wp-co…itting-on-sofa-with-parents-arguing-m-400x300.jpg' },
-        { id: 5, serviceName: 'Employment Law', serviceDescription: 'Are you ignored in you company" We are the right place to get your justice.', img: 'https://a6e8z9v6.stackpathcdn.com/lawyerbase/wp-co…cierges-holding-the-cart-and-posing-m-400x300.jpg' },
-        { id: 6, serviceName: 'Corporate Law', serviceDescription: 'Are thinking about you corporate rules. Nothing to worry! Come to us.', img: 'https://a6e8z9v6.stackpathcdn.com/lawyerbase/wp-co…olia_3104144_Subscription_Monthly_XXL-400x300.jpg' },
+        { id: 1, serviceName: 'Bank And Financial',price: 3000, serviceDescription: 'We provide efficient bank and financial service.', img: service1 },
+        { id: 2, serviceName: 'Car Accident',price:1200, serviceDescription: 'We provide support for car accident', img: service2 },
+        { id: 3, serviceName: 'Personal Injury',price: 3000, serviceDescription: 'We help you to support if you are personally injured.', img: service3 },
+        { id: 4, serviceName: 'Family Law',price:1400, serviceDescription: 'If you are suffering in your internal family matter. We are here to help you.', img: service4 },
+        { id: 5, serviceName: 'Employment Law',price:500, serviceDescription: 'Are you ignored in you company" We are the right place to get your justice.', img: service5 },
+        { id: 6, serviceName: 'Corporate Law',price:500, serviceDescription: 'Are thinking about you corporate rules. Nothing to worry! Come to us.', img: service6 },
 
     ]
     return (
