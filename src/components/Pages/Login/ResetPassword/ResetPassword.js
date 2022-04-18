@@ -1,15 +1,21 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../../firebase.init';
 
 const ResetPassword = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const confirmPasswordRef = useRef('');
-    const handleResetPassword = e => {
+    const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(auth);
+    
+    const handleResetPassword = async e => {
         e.preventDefault();
-        
+        const email = emailRef.current.value;
+        await sendPasswordResetEmail(email)
     }
+
     return (
         <div className='container w-50 mt-5 p-5 border'>
             <h3 className='text-center'>Please Login</h3>

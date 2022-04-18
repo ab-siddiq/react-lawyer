@@ -20,22 +20,20 @@ const Register = () => {
     const [sendEmailVerification] = useSendEmailVerification(auth);
     console.log(user)
 
-    const handleSubmit = e => {
+    const handleRegister = async e => {
         e.preventDefault();
-        const email = e.target.email.value;
+         const  email =await e.target.email.value;
         const password = e.target.password.value;
         createUserWithEmailAndPassword(email, password);
-        sendEmailVerification();
+        await sendEmailVerification();
     
     }
-    const handleRegister = () => {
-        // navigate('/login');
-    }
+ 
    
     return (
         <div className='container w-50 mt-5 border p-5'>
             <h3 className='mb-b text-center'>Please Register</h3>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Your Name</Form.Label>
                     <Form.Control ref={nameRef} type="text" name='name' placeholder="Your Name" />
@@ -71,7 +69,7 @@ const Register = () => {
                 <Form.Group className="mb-3" controlId="">
                     <p>Already have an account? <Link to='/login'>Please login.</Link></p>
                 </Form.Group>
-                <Button onClick={handleRegister}
+                <Button 
                     className='' variant="primary" type="submit">
                     Register
                 </Button>

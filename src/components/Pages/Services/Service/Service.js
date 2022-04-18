@@ -1,15 +1,19 @@
 import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const Service = ({ service }) => {
-    const { serviceName, serviceDescription } = service;
+    const { id, serviceName, serviceDescription } = service;
+    const navigate = useNavigate('');
+    const handleGetService = id => {
+        console.log(id);
+        navigate(`/getService/${id}`)
+    }
     return (
-        <div>
-          
+        <div className='border rounded p-5 h-100'>
             <h3>{serviceName}</h3>
-            <p>{ serviceDescription}</p>
-        k
-            
+            <p>{serviceDescription}</p>
+            <button onClick={() => { handleGetService(id) }} className='btn btn-primary'>Get Service</button>
         </div>
     );
 };
