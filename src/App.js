@@ -12,6 +12,7 @@ import Profile from './components/Pages/Profile/Profile';
 import RequireAuth from './components/Pages/Login/RequireAuth/RequireAuth';
 import GetService from './components/Pages/Services/GetService/GetService';
 import SocialLogin from './components/Pages/Login/SocialLogin/SocialLogin';
+import Blog from './components/Pages/Blog/Blog';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/socialLogin' element={<SocialLogin></SocialLogin>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/resetpassword' element={<ResetPassword></ResetPassword>}></Route>
         <Route path='/getService/:serviceId' element={
           <RequireAuth>

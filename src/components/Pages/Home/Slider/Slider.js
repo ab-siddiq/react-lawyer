@@ -14,7 +14,7 @@ const Slider = () => {
 
     return (
         <div className=''>
-            <Carousel activeIndex={index} onSelect={handleSelect}>
+            <Carousel className='header' activeIndex={index} onSelect={handleSelect}>
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
@@ -22,33 +22,33 @@ const Slider = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h3>Quality Service.</h3>
+                        <p>We always maintain quality service.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
+                        className="d-block w-100 overlay"
                         src={lawyer2}
                         alt="Second slide"
                     />
 
                     <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>We are faithful.</h3>
+                        <p>We are faithful across all our clients.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item>
+                <Carousel.Item className='overlay'> 
                     <img
-                        className="d-block w-100"
+                        className="d-block w-100 overlay"
                         src={lawyer3}
                         alt="Third slide"
                     />
 
                     <Carousel.Caption>
-                        <h3>Third slide label</h3>
+                        <h3>Are you suffering?</h3>
                         <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                            We are here to help you with full of confidence.
                         </p>
                     </Carousel.Caption>
                 </Carousel.Item>
