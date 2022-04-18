@@ -37,7 +37,7 @@ const GetService = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Details</Form.Label>
-                    <Form.Control ref={detailsRef} type="password" name='password' placeholder="Password" />
+                    <Form.Control ref={detailsRef} type="text" name='details' placeholder="Type details" />
                 </Form.Group>
                 
                 <Button

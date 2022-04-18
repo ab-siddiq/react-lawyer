@@ -39,7 +39,7 @@ const About = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
                             <Form.Label>Your question</Form.Label>
-                            <Form.Control ref={yourQuestionRef} type="text" name='confirmPassword' placeholder="Your question" />
+                            <Form.Control ref={yourQuestionRef} type="text" name='details' placeholder="Your question" />
                         </Form.Group>
                       
                         <Button
