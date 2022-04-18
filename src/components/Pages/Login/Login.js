@@ -13,26 +13,31 @@ const Login = () => {
     const passwordRef = useRef('');
     const navigate = useNavigate('');
     const location = useLocation();
-    const [signInWithEmailAndPassword,   user  ] = useSignInWithEmailAndPassword(auth);
+    const [signInWithEmailAndPassword,   user,        loading,        error,] = useSignInWithEmailAndPassword(auth);
     
     const from = location.state?.from?.pathname || '/';
     if (user) {
-        navigate(from, {replace:true});
+        navigate(from, { replace: true });
     }
-    
-    const handleLogin = async e => {
+    const handleLoginSubmit = async e => {
         e.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        await signInWithEmailAndPassword(email, password);
+        await signInWithEmailAndPassword(email, password); 
         
-        if (email) {
-            toast('Login Successful!');
-        } else {
-            toast('Invalid user!');
-        }
        
     }
+    let errorElement;
+    
+    if (error) {
+        errorElement =
+            <div>
+                <p className='text-danger'>Error: {error.message}</p>
+            </div>
+    } 
+        const handleLogin = () => {
+          
+        }
    
     if (user) {
         console.log('login success')
@@ -41,7 +46,7 @@ const Login = () => {
     return (
         <div className='container w-50 mt-5 p-5 border'>
             <h3 className='text-center'>Please Login</h3>
-            <Form onSubmit={handleLogin}>
+            <Form onSubmit={handleLoginSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control ref={emailRef} type="email" placeholder="Enter email" />
@@ -60,7 +65,8 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Link to='/resetpassword'>Forgot password?</Link>
                 </Form.Group>
-                <Button className='' variant="primary" type="submit">
+                {errorElement}
+                <Button onClick={handleLogin} className='' variant="primary" type="submit">
                     Login
                 </Button>
             </Form>

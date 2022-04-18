@@ -11,12 +11,16 @@ const SocialLogin = () => {
     if (user) {
         navigate(from, {replace:true});
     }
+    let errorMessage;
+    if (error) {
+        errorMessage = <p className='text-danger'>Error: {error.message}</p>
+    }
     const handleGoogleSignIn = ()  => {
         signInWithGoogle();
-        navigate('/');
     }
     return (
         <div className="social-login row justify-content-center">
+            {errorMessage}
                 <div className="col-12 text-center w-50">
                 <p onClick={handleGoogleSignIn} className="btn btn-outline-primary">Google Sign In</p>
                 </div>
